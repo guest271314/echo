@@ -1,18 +1,32 @@
-const headers = {
-  "access-control-allow-origin": "*"
+ export const config = {
+  runtime: "edge", // Use Edge Runtime
 };
+
 export default async function handler(request) {
-  let response;
+  const headers = {
+    "access-control-allow-origin": "*",
+  };
+
+  let body: BodyInit | null = null;
+
   if (request.method === "GET") {
-    response = "Echo";
+    body = "Echo";
   }
+
   if (request.method === "POST") {
-    response = request.body;
+    body = await request.text(); // Or request.json() if expecting JSON
   }
+
   if (request.method === "OPTIONS") {
-    response = null;
+    return new Response(null, {
+      status: 204,
+      headers: {
+        ...headers,
+        "access-control-allow-methods": "GET,POST,OPTIONS",
+        "access-control-allow-headers": "Content-Type",
+      },
+    });
   }
-  return new Response(response, {
-    headers
-  });
+
+  return new Response(body, { headers });
 }
