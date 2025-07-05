@@ -1,7 +1,7 @@
 const headers = {
   "access-control-allow-origin": "*"
 };
-export default function handler(request) {
+export function GET(request) {
   let response;
   if (request.method === "GET") {
     response = "Echo";
