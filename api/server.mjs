@@ -7,7 +7,7 @@ export default async function handler(request) {
     "access-control-allow-origin": "*",
   };
 
-  let body: BodyInit | null = null;
+  let body;
 
   if (request.method === "GET") {
     body = "Echo";
