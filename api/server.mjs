@@ -4,6 +4,7 @@
 
 export default async function handler(request) {
   const headers = {
+    "access-control-allow-headers": "access-control-allow-origin,cache-control,pragma",
     "access-control-allow-origin": "*",
     "content-type": "text/plain"
   };
