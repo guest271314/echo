@@ -23,8 +23,7 @@ export default async function handler(request) {
       status: 204,
       headers: {
         ...headers,
-        "access-control-allow-methods": "GET,POST,OPTIONS",
-        "access-control-allow-headers": "Content-Type",
+        "access-control-allow-methods": "GET,POST,OPTIONS"
       },
     });
   }
